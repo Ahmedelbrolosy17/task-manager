@@ -16,19 +16,19 @@ const TaskCard = ({ task, setIsEdited, setIsForm }) => {
   };
 
   return (
-    <div className="w-full max-w-sm bg-white border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4">
+    <div className="w-full max-w-full sm:max-w-sm bg-white border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 mx-auto">
       <div className="flex justify-between items-start mb-3">
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 leading-tight mb-1">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 leading-tight mb-1">
             {task.title}
           </h3>
           <div className="flex items-center gap-3 text-xs text-gray-500">
             <div className="flex items-center gap-1">
-              <Calendar className="w-3 h-3" />
+              <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>{task.date || 'No due date'}</span>
             </div>
             <div className="flex items-center gap-1">
-              <Clock className="w-3 h-3" />
+              <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>{task.time || 'No estimate'}</span>
             </div>
           </div>
@@ -43,7 +43,7 @@ const TaskCard = ({ task, setIsEdited, setIsForm }) => {
         </button>
       </div>
 
-      <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+      <p className="text-sm sm:text-base text-gray-600 mb-4 line-clamp-2">
         {task.description || "No description provided"}
       </p>
 
@@ -75,7 +75,7 @@ const TaskCard = ({ task, setIsEdited, setIsForm }) => {
       {task.image && (
         <div className="mb-4 relative group">
           <img
-            className="w-full h-32 object-cover rounded-lg"
+            className="w-full h-32 object-cover rounded-lg sm:h-40"
             src={task.image}
             alt="Task visual"
           />
@@ -86,14 +86,14 @@ const TaskCard = ({ task, setIsEdited, setIsForm }) => {
       <div className="flex justify-end gap-2">
         <button
           onClick={() => hndleEdit(task)}
-          className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 transition-colors duration-200"
+          className="inline-flex items-center px-3 py-1.5 text-xs sm:text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 transition-colors duration-200"
         >
           <Edit2 className="w-3 h-3 mr-1" />
           Edit
         </button>
         <button
           onClick={() => hndleDeleteTask(task.id)}
-          className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 focus:ring-4 focus:ring-gray-100 transition-colors duration-200"
+          className="inline-flex items-center px-3 py-1.5 text-xs sm:text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 focus:ring-4 focus:ring-gray-100 transition-colors duration-200"
         >
           <Trash2 className="w-3 h-3 mr-1" />
           Delete

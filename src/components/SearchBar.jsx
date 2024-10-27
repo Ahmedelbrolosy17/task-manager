@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { setSearchTerm } from '../redux/TasksSlice';
 
 const schema = yup.object().shape({
-  name: yup.string().nullable(), // Allow an empty string for live search
+  name: yup.string().nullable(), 
 });
 
 const SearchBar = () => {
@@ -25,12 +25,12 @@ const SearchBar = () => {
   }, [searchTerm, dispatch]);
 
   return (
-    <form className="flex items-center justify-center">
+    <form className="flex items-center justify-center w-full">
       <input
         type="text"
         {...register('name')}
         placeholder="Search by title"
-        className="border w-[80%] border-gray-300 rounded-lg px-3 py-2 focus:outline-none transition duration-200"
+        className="border w-full sm:w-3/4 lg:w-1/2 border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
       />
       {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
     </form>

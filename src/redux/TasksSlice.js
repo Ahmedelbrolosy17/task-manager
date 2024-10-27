@@ -2,48 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 let id = 1; 
 
-// Defining the initial state for the slice
+// Define the initial state for the slice
 const initialState = {
-  data: [
-    {
-      title: 'task1',
-      priority: 'low',
-      state: 'todo',
-      description: 'here are a test 1'
-    },
-    {
-      title: 'task2',
-      priority: 'high',
-      state: 'done',
-      description: 'here are a test 2'
-    },
-    {
-      title: 'task3',
-      priority: 'medium',
-      state: 'doing',
-      description: 'here are a test 3'
-    },
-    {
-      title: 'task5',
-      priority: 'high',
-      state: 'todo',
-      description: 'here are a test 5'
-    },
-    {
-      title: 'task6',
-      priority: 'low',
-      state: 'todo',
-      description: 'here are a test 6'
-    },
-    {
-      title: 'task4',
-      priority: 'medium',
-      state: 'done',
-      description: 'here are a test 4'
-    },
-  ],
+  data: [],
   filteredData: [],  // Array for storing filtered tasks
-  taskBeingUpdated: null, 
+  taskBeingUpdated: null, // Change to null for easier checks
   currentFilter: 'all', // Filter: 'all', 'todo', 'doing', 'done'
   currentPriorityFilter: 'all', // New filter for priority: 'all', 'low', 'medium', 'high'
   searchTerm: '', // New state for search term
@@ -55,7 +18,7 @@ const TasksSlice = createSlice({
   reducers: {
     addTask: (state, action) => {
       state.data.push({ ...action.payload, id: id++ });
-      state.filteredData = applyFilter(state.data, state.currentFilter, state.currentPriorityFilter, state.searchTerm); 
+      state.filteredData = applyFilter(state.data, state.currentFilter, state.currentPriorityFilter, state.searchTerm);
     },
     deleteTask: (state, action) => {
       state.data = state.data.filter(ele => ele.id !== action.payload);
@@ -74,7 +37,7 @@ const TasksSlice = createSlice({
         }
         return ele;
       });
-      state.filteredData = applyFilter(state.data, state.currentFilter, state.currentPriorityFilter, state.searchTerm);
+      state.filteredData = applyFilter(state.data, state.currentFilter, state.currentPriorityFilter, state.searchTerm); 
     },
     setFilter: (state, action) => {
       // Set the filter to 'all', 'todo', 'doing', 'done'
@@ -89,11 +52,11 @@ const TasksSlice = createSlice({
     setSearchTerm: (state, action) => {
       // Update the search term
       state.searchTerm = action.payload;
-      state.filteredData = applyFilter(state.data, state.currentFilter, state.currentPriorityFilter, state.searchTerm);
+      state.filteredData = applyFilter(state.data, state.currentFilter, state.currentPriorityFilter, state.searchTerm); 
     },
     resetSearchTerm: (state) => {
       state.searchTerm = ''; // Reset the search term
-      state.filteredData = applyFilter(state.data, state.currentFilter, state.currentPriorityFilter, state.searchTerm);
+      state.filteredData = applyFilter(state.data, state.currentFilter, state.currentPriorityFilter, state.searchTerm); 
     },
   },
 });
@@ -122,6 +85,7 @@ const applyFilter = (data, filter, priorityFilter, searchTerm) => {
   return filteredData;
 };
 
+
 export const { 
   addTask, 
   deleteTask, 
@@ -133,6 +97,5 @@ export const {
   setSearchTerm,
   resetSearchTerm
 } = TasksSlice.actions;
-
 
 export default TasksSlice.reducer;
