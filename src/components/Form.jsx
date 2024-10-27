@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { addTask, upDateTask, clearTask } from '../redux/tasksSlice';
+import { addTask, upDateTask, clearTask } from '../redux/TasksSlice';
 
 const schema = yup.object().shape({
     title: yup.string().required('Title is required'),
